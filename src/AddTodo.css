@@ -1,0 +1,17 @@
+.add-todo {
+  margin: 0 0 5px 0;
+}
+
+.field-task-name {
+  width: 300px;
+  padding: 2px;
+  border: 1px solid #999999;
+}
+
+.field-task-name:focus {
+  border-color: blueviolet;
+}
+
+.button-add-task {
+  width: 94px;
+}
