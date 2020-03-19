@@ -2,11 +2,12 @@ require('./TodoList.css');
 const React = require('react');
 const AddTodo = require('./AddTodo');
 const TodoItem = require('./TodoItem');
+const { connect } = require('react-redux');
 
 let handleTimeOut = null;
 const ERROR_TIMEOUT = 10000;
 
-function TodoList () {
+function TodoList ({ title }) {
   const [todoList, addTodo] = React.useState([]);
   const [error, updateError] = React.useState({ show: false, message: null });
 
@@ -54,7 +55,7 @@ function TodoList () {
 
   return (
     <div className="todo-list">
-      <h3 className="todo-title">React Todo App</h3>
+      <h3 className="todo-title">{title}</h3>
       {error.show && (
         <div className="error-message">
           {error.message}       
@@ -68,4 +69,12 @@ function TodoList () {
   )
 }
 
-module.exports = TodoList;
+
+const EnahncedTodoList = connect(
+  (state, ownProps) => ({
+    title: state.title
+  }),
+  () => {}
+)(TodoList);
+
+module.exports = EnahncedTodoList;
