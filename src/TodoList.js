@@ -7,7 +7,7 @@ const { connect } = require('react-redux');
 let handleTimeOut = null;
 const ERROR_TIMEOUT = 10000;
 
-function TodoList ({ title }) {
+function TodoList ({ title, tasks }) {
   const [todoList, addTodo] = React.useState([]);
   const [error, updateError] = React.useState({ show: false, message: null });
 
@@ -62,7 +62,7 @@ function TodoList ({ title }) {
         </div>
       )}
       <AddTodo handleSubmit={handleSubmit} />
-      {todoList.map((item) => {
+      {tasks.map((item) => {
         return <TodoItem key={item.id} item={item} handleTaskDelete={handleTaskDelete} />
       })}
     </div>
@@ -72,7 +72,8 @@ function TodoList ({ title }) {
 
 const EnahncedTodoList = connect(
   (state, ownProps) => ({
-    title: state.title
+    title: state.title,
+    tasks: state.tasks
   }),
   () => {}
 )(TodoList);

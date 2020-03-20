@@ -7,7 +7,7 @@ const rootElement = require('./rootElement');
 const TodoList = require('./TodoList');
 const reducer = require('./reducer').default;
 
-const store = createStore(reducer, { title: 'React Redux Todo App' });
+const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
